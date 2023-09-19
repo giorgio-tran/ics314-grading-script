@@ -9,7 +9,7 @@
       ```bash
       $ npm run clonerepos {name of assignment (i.e sumofnumbers)}
       ```
-4. All of the repos are cloned into the `repos` directory, and their name is converted into the students' name
+4. All of the repos are cloned into the `repos` directory, and their name is converted into the students' name to make grading easier
 5. To clear all of the repos run:
 
       ```bash
