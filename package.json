@@ -3,6 +3,7 @@
     "simple-git": "^3.19.1"
   },
   "scripts": {
-    "start": "node clonerepos.js"
+    "clonerepos": "node clonerepos.js",
+    "clearrepos": "rm -rf repos/*"
   }
 }
