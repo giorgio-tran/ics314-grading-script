@@ -9,8 +9,9 @@
       ```bash
       $ npm run clonerepos {name of assignment (i.e sumofnumbers)}
       ```
-4. To clear all of the repos run:
+4. All of the repos are cloned into the `repos` directory, and their name is converted into the students' name
+5. To clear all of the repos run:
 
       ```bash
       $ npm run clearrepos
-      ```
+      ``` 
