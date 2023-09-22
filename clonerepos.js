@@ -1,11 +1,9 @@
 const fs = require("fs");
-const simpleGit = require("simple-git");
 const { execSync } = require("child_process");
-
-const git = simpleGit();
 
 const students = JSON.parse(fs.readFileSync("./students.json", "utf8"));
 const assignmentRepoName = process.argv[2];
+const studentsWithoutRepos = [];
 
 async function getRepos() {
   if (!fs.existsSync("./repos")) {
@@ -15,13 +13,22 @@ async function getRepos() {
   for (let student of students) {
     const url = `https://github.com/${student.github}/${assignmentRepoName}`;
     try {
-      await git.clone(url);
-      execSync(`mv ${assignmentRepoName} "${student.name}"`);
-      execSync(`mv "${student.name}" ./repos`);
+      execSync(`git clone ${url} "./repos/${student.name}"`);
+
+      if (fs.existsSync(`./repos/${student.name}/package.json`)) {
+        execSync(`cd "./repos/${student.name}" && npm install && cd ..`);
+      }
     } catch (err) {
+      // console.log("error", err);
       console.log("No repository found for", student.name);
+      studentsWithoutRepos.push(student.name);
     }
   };
+
+  console.log("\n\nDid not find repos of following students:");
+  for (let student of studentsWithoutRepos) {
+    console.log(student);
+  }
 }
 
 function run() {
