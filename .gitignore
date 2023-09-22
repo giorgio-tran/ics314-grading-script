@@ -1,3 +1,5 @@
 students.json
 node_modules
 repos
+.idea
+.vscode
