@@ -1,9 +1,6 @@
 {
-  "dependencies": {
-    "simple-git": "^3.19.1"
-  },
   "scripts": {
-    "clonerepos": "node clonerepos.js",
+    "clonerepos": "npm run clearrepos && node clonerepos.js",
     "clearrepos": "rm -rf repos/*"
   }
 }
